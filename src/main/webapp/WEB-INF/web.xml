@@ -7,16 +7,5 @@
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
-
-    <servlet>
-        <servlet-name>AssinaturaServlet</servlet-name>
-        <servlet-class>com.signapp.servlets.AssinaturaServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>AssinaturaServlet</servlet-name>
-        <url-pattern>/assinatura</url-pattern>
-    </servlet-mapping>
-
 </web-app>
 
