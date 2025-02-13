@@ -1,67 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assinatura Digital</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-        label {
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-        input[type="text"], textarea {
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-    </style>
-</head>
-<body>
-<div class="container">
-    <h2>Assinatura Digital</h2>
-    <form action="/assinaturaProject/assinatura" method="post">
-        <label for="mensagem">Mensagem:</label>
-        <textarea id="mensagem" name="mensagem" rows="4" cols="50" required></textarea><br><br>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Digital Signature</title>-->
+<!--    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <h2>Digital Signature</h2>-->
+<!--    <p>Escolha uma das opções abaixo para começar:</p>-->
 
-        <input type="submit" value="Assinar Mensagem">
-    </form>
-</div>
-<div id="resultado"></div>
-</body>
-</html>
+<!--    <div class="options">-->
+<!--        &lt;!&ndash; Opção 1: Enviar Mensagem &ndash;&gt;-->
+<!--        <div class="option-card">-->
+<!--            <h3>Enviar Mensagem</h3>-->
+<!--            <p>Digite uma mensagem e assine digitalmente para garantir sua autenticidade.</p>-->
+<!--            <a href="/signature/signature">Acessar</a>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Opção 2: Visualizar Mensagens &ndash;&gt;-->
+<!--        <div class="option-card">-->
+<!--            <h3>Visualizar Mensagens</h3>-->
+<!--            <p>Veja todas as mensagens já enviadas e suas assinaturas.</p>-->
+<!--            <a href="/signature/messages">Acessar</a>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Opção 3: Verificar Assinatura &ndash;&gt;-->
+<!--        <div class="option-card">-->
+<!--            <h3>Verificar Assinatura</h3>-->
+<!--            <p>Descriptografe e verifique se uma assinatura digital é válida.</p>-->
+<!--            <a href="/signature/verify">Acessar</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash;<div id="result"></div>&ndash;&gt;-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--&lt;!&ndash;    <form action="/signature/signature" method="post">&ndash;&gt;-->
+<!--&lt;!&ndash;        <label for="message">Message:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <input type="submit" value="Sign Message">&ndash;&gt;-->
+<!--&lt;!&ndash;    </form>&ndash;&gt;-->
