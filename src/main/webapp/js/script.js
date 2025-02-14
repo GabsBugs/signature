@@ -37,7 +37,8 @@ document.addEventListener('DOMContentLoaded', function () {
             ViewMessagesA: "View Messages",
             VerifySignatureH3: "Verify Signature",
             VerifySignatureP: "Decrypt and verify that a digital signature is valid.",
-            VerifySignatureA: "Verify Signature"
+            VerifySignatureA: "Verify Signature",
+            home: "Home",
         },
         fr: {
             welcome: "Bienvenue sur SignaTrust",
@@ -55,7 +56,8 @@ document.addEventListener('DOMContentLoaded', function () {
             ViewMessagesA: "Voir les Messages",
             VerifySignatureH3: "Vérifier la Signature",
             VerifySignatureP: "Déchiffrez et vérifiez qu'une signature numérique est valide.",
-            VerifySignatureA: "Vérifier la Signature"
+            VerifySignatureA: "Vérifier la Signature",
+            home: "Accueil",
         },
         de: {
             welcome: "Willkommen bei SignaTrust",
@@ -73,7 +75,8 @@ document.addEventListener('DOMContentLoaded', function () {
             ViewMessagesA: "Nachrichten Anzeigen",
             VerifySignatureH3: "Signatur Überprüfen",
             VerifySignatureP: "Entschlüsseln und überprüfen Sie, ob eine digitale Signatur gültig ist.",
-            VerifySignatureA: "Signatur Überprüfen"
+            VerifySignatureA: "Signatur Überprüfen",
+            home: "Startseite",
         },
         es: {
             welcome: "Bienvenido a SignaTrust",
@@ -91,7 +94,8 @@ document.addEventListener('DOMContentLoaded', function () {
             ViewMessagesA: "Ver Mensajes",
             VerifySignatureH3: "Verificar Firma",
             VerifySignatureP: "Descifre y verifique que una firma digital sea válida.",
-            VerifySignatureA: "Verificar Firma"
+            VerifySignatureA: "Verificar Firma",
+            home: "Inicio",
         },
         pt: {
             welcome: "Bem-vindo ao SignaTrust",
@@ -109,7 +113,8 @@ document.addEventListener('DOMContentLoaded', function () {
             ViewMessagesA: "Visualizar Mensagens",
             VerifySignatureH3: "Verificar Assinatura",
             VerifySignatureP: "Descriptografe e verifique se uma assinatura digital é válida.",
-            VerifySignatureA: "Verificar Assinatura"
+            VerifySignatureA: "Verificar Assinatura",
+            home: "Início",
         },
         zh: {
             welcome: "欢迎来到 SignaTrust",
@@ -127,7 +132,8 @@ document.addEventListener('DOMContentLoaded', function () {
             ViewMessagesA: "查看消息",
             VerifySignatureH3: "验证签名",
             VerifySignatureP: "解密并验证数字签名是否有效。",
-            VerifySignatureA: "验证签名"
+            VerifySignatureA: "验证签名",
+            home: "首页",
         },
         ja: {
             welcome: "SignaTrustへようこそ",
@@ -145,7 +151,8 @@ document.addEventListener('DOMContentLoaded', function () {
             ViewMessagesA: "メッセージを表示",
             VerifySignatureH3: "署名を確認",
             VerifySignatureP: "復号化してデジタル署名が有効かどうかを確認します。",
-            VerifySignatureA: "署名を確認"
+            VerifySignatureA: "署名を確認",
+            home: "ホーム",
         },
         ru: {
             welcome: "Добро пожаловать в SignaTrust",
@@ -163,7 +170,8 @@ document.addEventListener('DOMContentLoaded', function () {
             ViewMessagesA: "Просмотреть Сообщения",
             VerifySignatureH3: "Проверить Подпись",
             VerifySignatureP: "Расшифруйте и проверьте, действительна ли цифровая подпись.",
-            VerifySignatureA: "Проверить Подпись"
+            VerifySignatureA: "Проверить Подпись",
+            home: "Главная",
         },
     };
 
@@ -210,3 +218,64 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+
+
+const storageKey = 'theme-preference'
+
+const onClick = () => {
+    // flip current value
+    theme.value = theme.value === 'light'
+        ? 'dark'
+        : 'light'
+
+    setPreference()
+}
+
+const getColorPreference = () => {
+    if (localStorage.getItem(storageKey))
+        return localStorage.getItem(storageKey)
+    else
+        return window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light'
+}
+
+const setPreference = () => {
+    localStorage.setItem(storageKey, theme.value)
+    reflectPreference()
+}
+
+const reflectPreference = () => {
+    document.firstElementChild
+        .setAttribute('data-theme', theme.value)
+
+    document
+        .querySelector('#theme-toggle')
+        ?.setAttribute('aria-label', theme.value)
+}
+
+const theme = {
+    value: getColorPreference(),
+}
+
+// set early so no page flashes / CSS is made aware
+reflectPreference()
+
+window.onload = () => {
+    // set on load so screen readers can see latest value on the button
+    reflectPreference()
+
+    // now this script can find and listen for clicks on the control
+    document
+        .querySelector('#theme-toggle')
+        .addEventListener('click', onClick)
+}
+
+// sync with system changes
+window
+    .matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', ({matches:isDark}) => {
+        theme.value = isDark ? 'dark' : 'light'
+        setPreference()
+    })

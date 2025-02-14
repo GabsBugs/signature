@@ -1,3 +1,5 @@
+@import "https://unpkg.com/open-props/easings.min.css";
+
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +19,7 @@ body {
 
 .header {
     /*background-color: #002855;*/
-    margin-top: 35px;
+    margin-top: 40px;
     background: radial-gradient(100% 100% at 50% -20%, rgb(76, 0, 255) 0%, rgb(38, 6, 93) 100%);
     color: #fff;
     padding: 10px 40px;
@@ -103,6 +105,8 @@ body {
 }
 
 .option-card {
+    display: flex;
+    flex-direction: column;
     background-color: #979dac26;
     padding: 20px;
     border-radius: 8px;
@@ -111,6 +115,7 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     text-align: center;
+    justify-content: space-between;
 }
 
 .option-card:hover {
@@ -127,12 +132,17 @@ body {
 }
 
 .option-card p {
+    min-height: 40px;
     font-size: 14px;
     color: #666;
     margin-bottom: 20px;
 }
 
 .option-card a {
+    margin-top: auto;
+    display: block;
+    max-width: 100%;
+    text-align: center;
     background-color: rgb(76, 0, 255);
     color: #fff;
     padding: 10px 20px;
@@ -141,6 +151,8 @@ body {
     transition: background-color 0.3s ease;
     font-size: 14px;
     font-weight: 600;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .option-card a:hover {
@@ -310,11 +322,117 @@ body.dark-mode .top-bar {
 }
 
 body.dark-mode .language-selector select {
-    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.6);
     color: #fff;
     border-color: #555;
 }
 
 body.dark-mode .help-support a {
     color: #1e90ff;
+}
+
+.globe-icon i {
+    font-size: 20px;
+    color: #666;
+    margin-top: 5px;
+}
+
+
+:root {
+    --icon-fill: #000;
+    --icon-fill-hover: #333;
+}
+
+[data-theme="dark"] {
+    --icon-fill: #fff;
+    --icon-fill-hover: #ccc;
+}
+
+:root {
+    --ease-elastic-4: cubic-bezier(0.5, 1.25, 0.75, 1.25);
+    --ease-3: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+:root {
+    --ease-out-5: cubic-bezier(0, 0, 0.2, 1);
+}
+
+:root {
+    --ease-elastic-3: cubic-bezier(0.5, 1.5, 0.75, 1.25);
+}
+
+.sun-and-moon > :is(.moon, .sun, .sun-beams) {
+    transform-origin: center;
+}
+
+.sun-and-moon > :is(.moon, .sun) {
+    fill: var(--icon-fill);
+}
+
+.theme-toggle:is(:hover, :focus-visible) > .sun-and-moon > :is(.moon, .sun) {
+    fill: var(--icon-fill-hover);
+}
+
+.sun-and-moon > .sun-beams {
+    stroke: var(--icon-fill);
+    stroke-width: 2px;
+}
+
+.theme-toggle:is(:hover, :focus-visible) .sun-and-moon > .sun-beams {
+    stroke: var(--icon-fill-hover);
+}
+
+[data-theme="dark"] .sun-and-moon > .sun {
+    transform: scale(1.75);
+}
+
+[data-theme="dark"] .sun-and-moon > .sun-beams {
+    opacity: 0;
+}
+
+[data-theme="dark"] .sun-and-moon > .moon > circle {
+    transform: translateX(-7px);
+}
+
+@supports (cx: 1) {
+    [data-theme="dark"] .sun-and-moon > .moon > circle {
+        cx: 17;
+        transform: translateX(0);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .sun-and-moon > .sun {
+        transition: transform .5s var(--ease-elastic-3);
+    }
+
+    .sun-and-moon > .sun-beams {
+        transition: transform .5s var(--ease-elastic-4), opacity .5s var(--ease-3);
+    }
+
+    .sun-and-moon .moon > circle {
+        transition: transform .25s var(--ease-out-5);
+    }
+
+    @supports (cx: 1) {
+        .sun-and-moon .moon > circle {
+            transition: cx .25s var(--ease-out-5);
+        }
+    }
+
+    [data-theme="dark"] .sun-and-moon > .sun {
+        transition-timing-function: var(--ease-3);
+        transition-duration: .25s;
+        transform: scale(1.75);
+    }
+
+    [data-theme="dark"] .sun-and-moon > .sun-beams {
+        transition-duration: .15s;
+        transform: rotateZ(-25deg);
+    }
+
+    [data-theme="dark"] .sun-and-moon > .moon > circle {
+        transition-duration: .5s;
+        transition-delay: .25s;
+    }
 }
