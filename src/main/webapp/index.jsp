@@ -13,8 +13,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="${pageContext.request.contextPath}/js/script.js" defer></script>
+
 </head>
 <body>
+<div class="top-bar">
+    <div class="language-selector">
+        <div class="language-switcher">
+            <span class="globe-emoji">🌐</span>
+            <span class="selected-language">English</span>
+            <span class="arrow-icon" style="font-size: 12px;"><i class="fa fa-chevron-down"></i></span>
+        </div>
+        <ul class="language-dropdown">
+            <li data-value="en">English</li>
+            <li data-value="pt">Português</li>
+            <li data-value="es">Español</li>
+            <li data-value="de">Deutsch</li>
+            <li data-value="fr">Français</li>
+            <li data-value="ja">日本語</li>
+            <li data-value="ru">Русский</li>
+        </ul>
+    </div>
+    <div class="dark-mode-toggle" style="padding: 0 15px;">
+        <label for="dark-mode-switch" data-key="darkMode">Dark Mode</label>
+        <input type="checkbox" id="dark-mode-switch">
+    </div>
+    <div class="help-support" style="padding: 0 15px;">
+        <a href="<c:url value='/help'/>" data-key="help">Help</a>
+    </div>
+</div>
 <header class="header">
     <div class="logo-container">
         <img src="${pageContext.request.contextPath}/images/logo-sign.webp" alt="SignaTrust Logo" class="logo">
@@ -23,9 +49,9 @@
     <nav class="nav-menu">
         <ul>
             <li><a href="<c:url value='/'/>"> <i class="fas fa-home"></i> Home</a></li>
-            <li><a href="<c:url value='views/signature/send-message.jsp'/>"><i class="fas fa-paper-plane"></i>Enviar Mensagem</a></li>
-            <li><a href="<c:url value='views/signature/view-messages.jsp'/>"><i class="fas fa-envelope-open-text"></i>Visualizar Mensagens</a></li>
-            <li><a href="<c:url value='views/signature/verify-signature.jsp'/>"><i class="fas fa-check-circle"></i>Verificar Assinatura</a></li>
+            <li><a href="<c:url value='views/signature/send-message.jsp'/>" data-key="SendMessage">Send Message</a></li>
+            <li><a href="<c:url value='views/signature/view-messages.jsp'/>" data-key="ViewMessages">View Messages</a></li>
+            <li><a href="<c:url value='views/signature/verify-signature.jsp'/>" data-key="VerifySignature">Verify Signature</a></li>
         </ul>
     </nav>
 
@@ -36,26 +62,26 @@
 </header>
 
 <div class="container">
-    <h2>Digital Signature</h2>
-    <p>Escolha uma das opções abaixo para começar:</p>
+    <h2 style="color:  rgb(38, 6, 93);" data-key="welcome"> Welcome to SignaTrust!</h2>
+    <p style="color:  rgb(38, 6, 93);" data-key="description">Choose an option below to get started.</p>
     <div class="options">
-        <!-- Opção 1: Enviar Mensagem -->
+        <!-- Option 1: Send Message -->
         <div class="option-card">
-            <h3>Enviar Mensagem</h3>
-            <p>Digite uma mensagem e assine digitalmente para garantir sua autenticidade.</p>
-            <a href="<c:url value='views/signature/send-message.jsp'/>">Enviar Mensagem</a>
+            <h3 data-key="SendMessageCardH3">Send Message</h3>
+            <p data-key="SendMessageCardP">Type a message and digitally sign it to ensure its authenticity.</p>
+            <a href="<c:url value='views/signature/send-message.jsp'/>"  data-key="SendMessageCardA" >Send Message</a>
         </div>
-        <!-- Opção 2: Visualizar Mensagens -->
+        <!-- Option 2: View Messages -->
         <div class="option-card">
-            <h3>Visualizar Mensagens</h3>
-            <p>Veja todas as mensagens já enviadas e suas assinaturas.</p>
-            <a href="<c:url value='views/signature/view-messages.jsp'/>">Visualizar Mensagens</a>
+            <h3 data-key="ViewMessagesH3">View Messages</h3>
+            <p data-key="ViewMessagesP">See all messages already sent and their signatures.</p>
+            <a href="<c:url value='views/signature/view-messages.jsp'/>" data-key="ViewMessagesA">View Messages</a>
         </div>
-        <!-- Opção 3: Verificar Assinatura -->
+        <!-- Option 3: Verify Signature -->
         <div class="option-card">
-            <h3>Verificar Assinatura</h3>
-            <p>Descriptografe e verifique se uma assinatura digital é válida.</p>
-            <a href="<c:url value='views/signature/verify-signature.jsp'/>">Verificar Assinatura</a>
+            <h3 data-key="VerifySignatureH3">Verify Signature</h3>
+            <p data-key="VerifySignatureP">Decrypt and verify that a digital signature is valid.</p>
+            <a href="<c:url value='views/signature/verify-signature.jsp'/>" data-key="VerifySignatureA">Verify Signature</a>
         </div>
     </div>
 </div>
