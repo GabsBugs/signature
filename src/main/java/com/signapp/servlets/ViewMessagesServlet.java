@@ -12,26 +12,26 @@ import java.util.List;
 @WebServlet("/signature/messages")
 public class ViewMessagesServlet extends HttpServlet {
 
-    // Simulação de uma lista de mensagens (banco de dados)
+    // List of messages (database)
     private List<Message> messages = new ArrayList<>();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Adiciona algumas mensagens de exemplo (apenas para teste)
+        // Add some example messages (for testing only)
         if (messages.isEmpty()) {
             messages.add(new Message("Olá, mundo!", "assinatura-123"));
             messages.add(new Message("Teste de assinatura digital", "assinatura-456"));
         }
 
-        // Define a lista de mensagens como um atributo da requisição
+        // Defines the list of messages as an attribute of the request
         req.setAttribute("messages", messages);
 
-        // Encaminha a requisição para a página JSP
+        // Forwards the request to the JSP page
         req.getRequestDispatcher("/WEB-INF/views/signature/view-messages.jsp").forward(req, resp);
     }
 }
 
-// Classe auxiliar para representar uma mensagem
+// Helper class to represent a message
 class Message {
     private String content;
     private String signature;

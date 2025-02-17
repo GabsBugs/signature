@@ -334,3 +334,7 @@ body.dark-mode .help-support a {
     color: #666;
     margin-top: 5px;
 }
+
+body.dark-mode .globe-icon i {
+    color: #1e90ff;
+}

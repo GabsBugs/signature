@@ -12,23 +12,21 @@ public class VerifySignatureServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Obtém a mensagem e a assinatura do formulário
+        // Gets the form message and signature
         String message = req.getParameter("message");
         String signature = req.getParameter("signature");
 
-        // Verifica se a assinatura é válida
+        // Checks if the signature is valid
         boolean isValid = verifySignature(message, signature);
 
-        // Define o resultado da verificação como um atributo da requisição
+        // Defines the verification result as an attribute of the request
         req.setAttribute("verificationResult", isValid);
 
-        // Encaminha a requisição para a página JSP
+        // Forwards the request to the JSP page
         req.getRequestDispatcher("/WEB-INF/views/signature/verify-signature.jsp").forward(req, resp);
     }
 
     private boolean verifySignature(String message, String signature) {
-        // Implemente a lógica de verificação da assinatura aqui
-        // Verifica se a assinatura começa com "assinatura-"
         return signature != null && signature.startsWith("assinatura-");
     }
 }
